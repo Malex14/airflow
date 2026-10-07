@@ -46,7 +46,7 @@ def getfqdn(name=""):
 
 def get_host_ip_address():
     """Fetch host ip address."""
-    return socket.gethostbyname(getfqdn())
+    return socket.getaddrinfo(getfqdn(), None)[0][4][0]
 
 
 def get_hostname():
