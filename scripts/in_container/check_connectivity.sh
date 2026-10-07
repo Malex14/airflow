@@ -21,7 +21,7 @@ function run_nc() {
     local host=${1}
     local port=${2}
     local ip
-    ip=$(python -c "import socket; print(socket.gethostbyname('${host}'))")
+    ip=$(python -c "import socket; print(socket.getaddrinfo('${host}', '${port}', family=socket.AF_INET | socket.AF_INET6)[0][4][0])")
 
     nc -zvvn "${ip}" "${port}"
 }
